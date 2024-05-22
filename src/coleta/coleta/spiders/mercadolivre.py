@@ -4,6 +4,8 @@ class MercadoLivreSpider(scrapy.Spider):
   # de onde será feito o request
   name = 'mercadolivre'
   start_urls = ['https://lista.mercadolivre.com.br/tenis-corrida-masculino']
+  
+  # paginas que serao buscadas
   page_count = 1
   max_pages = 10
 
