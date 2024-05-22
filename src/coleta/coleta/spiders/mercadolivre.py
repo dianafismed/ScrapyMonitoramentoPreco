@@ -13,9 +13,8 @@ class MercadoLivreSpider(scrapy.Spider):
 
     for product in products:
       # precos dos tenis
-      prices = product.css('span.andes-money-amount__fraction::text').getall()
-      #
-      cents = product.css('span.andes-money-amount__cents::text').getall()
+      prices = product.css('span.andes-money-amount__fraction::text').getall()  # inteiro de reais
+      cents = product.css('span.andes-money-amount__cents::text').getall()      # centavos
       
       # faz várias coletas - seria o return da função
       yield {
@@ -29,7 +28,7 @@ class MercadoLivreSpider(scrapy.Spider):
         'reviews_amount': product.css('span.ui-search-reviews__amount::text').get()
       }
 
-    
+    # vai para a proxima pagina
     if self.page_count < self.max_pages:
       next_page = response.css('li.andes-pagination__button.andes-pagination__button--next a::attr(href)').get()
       if next_page:
